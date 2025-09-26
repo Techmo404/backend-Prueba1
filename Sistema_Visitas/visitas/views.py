@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Visita
 from .forms import VisitaForm
 from datetime import date
 
 def lista_visitas(request):
-    visitas = Visita.objects.filter()
+    visitas = Visita.objects.all()
     return render(request, 'visitas/lista_visitas.html', {'visitas': visitas})
 
 def nueva_visita(request):
@@ -16,3 +16,9 @@ def nueva_visita(request):
     else:
         form = VisitaForm()
     return render(request, 'visitas/nueva_visita.html', {'form': form})
+
+def eliminar_visita(request, visita_id):
+    visita = get_object_or_404(Visita, id=visita_id)
+    if request.method == "POST":
+        visita.delete()
+    return redirect('lista_visitas')
