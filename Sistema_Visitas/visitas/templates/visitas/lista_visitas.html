@@ -1,0 +1,46 @@
+{% extends 'visitas/base.html' %}
+
+{% block title %} Lista de Visitas {% endblock %}
+
+{% block content %}
+  <div class="bg-white rounded-xl shadow-lg p-6">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Lista de Visitas</h1>
+    <a href="{% url 'nueva_visita' %}"
+       class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-all">
+       ➕ Nueva Visita
+    </a>
+
+    <div class="overflow-x-auto mt-6">
+      <table class="min-w-full border-collapse">
+        <thead>
+          <tr class="bg-gray-100 text-gray-700 text-left">
+            <th class="py-3 px-4 border-b">Fecha</th>
+            <th class="py-3 px-4 border-b">Nombre</th>
+            <th class="py-3 px-4 border-b">RUT</th>
+            <th class="py-3 px-4 border-b">Motivo</th>
+            <th class="py-3 px-4 border-b">Hora Entrada</th>
+            <th class="py-3 px-4 border-b">Hora Salida</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-800">
+          {% for visita in visitas %}
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4 border-b">{{ visita.fecha }}</td>
+              <td class="py-2 px-4 border-b">{{ visita.nombre }}</td>
+              <td class="py-2 px-4 border-b">{{ visita.rut }}</td>
+              <td class="py-2 px-4 border-b">{{ visita.motivo_visita }}</td>
+              <td class="py-2 px-4 border-b">{{ visita.hora_entrada }}</td>
+              <td class="py-2 px-4 border-b">{{ visita.hora_salida }}</td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="6" class="py-4 text-center text-gray-500">
+                No hay visitas registradas.
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

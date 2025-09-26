@@ -1,0 +1,53 @@
+{% extends 'visitas/base.html' %}
+
+{% block title %}Nueva Visita{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg border border-white/30">
+
+    <!-- Título con fondo -->
+    <div class="bg-blue-600 text-white p-3 rounded-md mb-5 text-center">
+        <h1 class="text-xl font-bold">Registrar Nueva Visita</h1>
+    </div>
+
+    <form method="post" class="space-y-4">
+        {% csrf_token %}
+
+        <!-- Nombre -->
+        <div>
+            <label class="block text-gray-700 font-medium">👤 Nombre</label>
+            {{ form.nombre }}
+        </div>
+
+        <!-- RUT -->
+        <div>
+            <label class="block text-gray-700 font-medium">🆔 RUT</label>
+            {{ form.rut }}
+        </div>
+
+        <!-- Motivo de Visita -->
+        <div>
+            <label class="block text-gray-700 font-medium">📝 Motivo de la Visita</label>
+            {{ form.motivo_visita }}
+        </div>
+
+        <!-- Hora Entrada -->
+        <div>
+            <label class="block text-gray-700 font-medium">⏰ Hora Entrada</label>
+            {{ form.hora_entrada }}
+        </div>
+
+        <!-- Hora Salida -->
+        <div>
+            <label class="block text-gray-700 font-medium">⏰ Hora Salida</label>
+            {{ form.hora_salida }}
+        </div>
+
+        <!-- Botones -->
+        <div class="flex justify-end gap-3 pt-4">
+            <a href="{% url 'lista_visitas' %}" class="px-4 py-2 border rounded-md bg-gray-100 text-gray-700">Cancelar</a>
+            <button type="submit" class="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700">Guardar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

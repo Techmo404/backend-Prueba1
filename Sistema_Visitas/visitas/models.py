@@ -1,15 +1,16 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
-from django.db import models
+
 
 class Visita(models.Model):
     nombre = models.CharField(max_length=100)
-    rut = models.CharField(max_length=12, unique=False) 
-    fecha = models.DateField(auto_now_add=True)
+    rut = models.CharField(max_length=12)
     motivo_visita = models.TextField()
-    hora_entrada = models.TimeField(auto_now_add=True)  
-    hora_salida = models.TimeField() 
+    hora_entrada = models.TimeField()
+    hora_salida = models.TimeField()
+    fecha = models.DateField(default=date.today)
 
     def __str__(self):
-        return self.nombre
+        return f"{self.nombre} - {self.rut}"
