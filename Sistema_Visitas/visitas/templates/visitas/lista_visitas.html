@@ -32,7 +32,8 @@
             <td class="py-2 px-4 border-b">{{ visita.hora_entrada }}</td>
             <td class="py-2 px-4 border-b">{{ visita.hora_salida }}</td>
             <td class="py-2 px-4 border-b">
-              <form action="{% url 'eliminar_visita' visita.id %}" method="post" class="inline">
+              <form action="{% url 'eliminar_visita' visita.id %}" method="post" class="inline" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta visita?');">
+                
                 {% csrf_token %}
                 <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition-all">Eliminar</button>
               </form>
