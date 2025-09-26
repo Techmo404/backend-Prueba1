@@ -4,13 +4,16 @@
 
 {% block content %}
 <div class="bg-white rounded-xl shadow-lg p-6">
+
   <h1 class="text-2xl font-bold text-gray-800 mb-6">Lista de Visitas</h1>
+  <!-- Boton para crear nueva visita -->
   <a href="{% url 'nueva_visita' %}" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-all">
     ➕ Nueva Visita
   </a>
-
+   <!-- Color de fondo -->
   <div class="overflow-x-auto mt-6">
     <table class="min-w-full border-collapse">
+      <!-- Columnas de encabezado -->
       <thead>
         <tr class="bg-gray-100 text-gray-700 text-left">
           <th class="py-3 px-4 border-b">Fecha</th>
@@ -22,6 +25,7 @@
           <th class="py-3 px-4 border-b">Acciones</th>
         </tr>
       </thead>
+      <!-- Muestra los datos de visitas -->
       <tbody class="text-gray-800">
         {% for visita in visitas %}
           <tr class="hover:bg-gray-50">
@@ -32,6 +36,7 @@
             <td class="py-2 px-4 border-b">{{ visita.hora_entrada }}</td>
             <td class="py-2 px-4 border-b">{{ visita.hora_salida }}</td>
             <td class="py-2 px-4 border-b">
+              <!-- Boton de eliminar -->
               <form action="{% url 'eliminar_visita' visita.id %}" method="post" class="inline" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta visita?');">
                 
                 {% csrf_token %}

@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+#incluye las urls en el panel de administracion
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("visitas.urls")),

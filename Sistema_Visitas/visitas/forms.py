@@ -1,7 +1,7 @@
 from django import forms
 from .models import Visita
 import re
-
+# diseño y el formulario de nueva visita
 class VisitaForm(forms.ModelForm):
     class Meta:
         model = Visita
@@ -28,7 +28,7 @@ class VisitaForm(forms.ModelForm):
                 'type': 'time'
             }),
         }
-
+# verifica que el rut sea valido 
     def clean_rut(self):
         rut = self.cleaned_data['rut']
         rut = rut.replace(".", "").replace("-", "").upper()
@@ -41,7 +41,7 @@ class VisitaForm(forms.ModelForm):
             num = int(num)
         except ValueError:
             raise forms.ValidationError("RUT inválido.")
-
+#verifica que el rut sea real
         suma = 0
         multiplicador = 2
         for digit in reversed(str(num)):
