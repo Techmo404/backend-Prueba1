@@ -1,2 +1,4 @@
 django
 gunicorn
+pyscopg2
+python-dotenv
