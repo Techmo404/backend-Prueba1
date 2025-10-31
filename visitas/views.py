@@ -3,11 +3,11 @@ from .models import Visita
 from .forms import VisitaForm
 from datetime import date
 from django.contrib import messages
-# Obtiene los datos de visitas y lo renderiza en la variable visitas
+
 def lista_visitas(request):
     visitas = Visita.objects.all() 
     return render(request, 'lista_visitas.html', {'visitas': visitas})
-#Crea una instancia del formulario
+
 def nueva_visita(request):
     if request.method == 'POST':
         form = VisitaForm(request.POST)
@@ -18,7 +18,7 @@ def nueva_visita(request):
         form = VisitaForm()
     return render(request, 'nueva_visita.html', {'form': form})
 
-#Busca si el id es valido y elimina una visita
+
 def eliminar_visita(request, visita_id):
     visita = get_object_or_404(Visita, id=visita_id)
     if request.method == "POST":
@@ -31,7 +31,7 @@ def detalle_visita(request, visita_id):
 
 
 def editar_visita(request, id):
-    # Obtener la visita o devolver 404 si no existe
+
     visita = get_object_or_404(Visita, id=id)
 
     if request.method == 'POST':
@@ -45,7 +45,6 @@ def editar_visita(request, id):
     else:
         form = VisitaForm(instance=visita)
 
-    # Enviar el formulario y el objeto visita al template
     return render(request, 'editar_visita.html', {
         'form': form,
         'visita': visita

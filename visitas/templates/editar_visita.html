@@ -4,7 +4,7 @@
 
 {% block content %}
   <div class="max-w-2xl mx-auto">
-    <!-- Encabezado -->
+   
     <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white mb-6 p-6 rounded-lg shadow-md">
       <h1 class="text-3xl font-bold mb-1">✏️ Editar Visita</h1>
       <p class="text-sm opacity-90">
@@ -12,14 +12,14 @@
       </p>
     </div>
 
-    <!-- Mensaje de error global -->
+    
     {% if form.non_field_errors %}
       <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
         {{ form.non_field_errors }}
       </div>
     {% endif %}
 
-    <!-- Formulario -->
+    
     <form method="post" class="bg-white p-8 rounded-lg shadow-lg border border-gray-200 space-y-6">
       {% csrf_token %}
 
@@ -35,7 +35,7 @@
         </div>
       {% endfor %}
 
-      <!-- Botones -->
+      
       <div class="flex justify-end space-x-4 pt-6 border-t border-gray-200">
         <a href="{% url 'lista_visitas' %}"
            class="hover:scale-105 transition-all inline-flex items-center px-6 py-3 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">

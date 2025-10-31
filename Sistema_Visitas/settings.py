@@ -9,8 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-import os
-from urllib.parse import urlparse
+
 from pathlib import Path
 import os 
 from dotenv import load_dotenv
@@ -31,7 +30,6 @@ SECRET_KEY = 'django-insecure-=b=b!#+f$*y3owxcizdhzdqn!+za7f!3knkd=+2505*#ilv^0)
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    ".onrender.com"
     ]
 
 STATIC_URL = '/static'
@@ -85,30 +83,14 @@ WSGI_APPLICATION = 'Sistema_Visitas.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASE_URL = os.getenv("DATABASE_URL")
-if DATABASE_URL:
-    result = urlparse(DATABASE_URL)
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': result.path[1:],
-            'USER': result.username,
-            'PASSWORD': result.password,
-            'HOST': result.hostname,
-            'PORT': result.port or 5432,
-        }
-    }
-else:
-
-    DATABASES = {
-    
-        'default': {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv("DB_NAME"),
-            "USER": os.getenv("DB_USER"),
-            "PASSWORD": os.getenv("DB_PASSWORD"),
-            "HOST": os.getenv("DB_HOST", "localhost"),
-            "PORT": os.getenv("DB_PORT","6543"),
+DATABASES = {
+    'default': {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("DBNAME"),
+        "USER":os.getenv("USER"),
+        "PASSWORD": os.getenv("PASSWORD"),
+        "HOST": os.getenv("HOST"),
+        "PORT": os.getenv("PORT"),
     }
 }
 

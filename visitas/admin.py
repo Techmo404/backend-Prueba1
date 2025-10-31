@@ -47,7 +47,7 @@ class VisitaAdmin(admin.ModelAdmin):
     def motivo_corto(self, obj):
         return (obj.motivo_visita[:40] + '...') if len(obj.motivo_visita) > 40 else obj.motivo_visita
 
-    # ✅ Validación tipo inline (sin romper la página ni redirigir)
+   
     def save_model(self, request, obj, form, change):
         errores = []
 
@@ -65,7 +65,7 @@ class VisitaAdmin(admin.ModelAdmin):
         if errores:
             for e in errores:
                 self.message_user(request, e, level=messages.ERROR)
-            return  # ❌ evita guardar el registro
+            return  
 
-        # ✅ Si todo está bien, guarda normalmente
+        
         super().save_model(request, obj, form, change)
