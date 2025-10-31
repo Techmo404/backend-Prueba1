@@ -63,3 +63,4 @@ class VisitaForm(forms.ModelForm):
 
         # Devolver en formato estándar con guión
         return f"{num}-{dv}"
+

@@ -1,4 +1,4 @@
-{% extends 'visitas/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %} Lista de Visitas {% endblock %}
 
@@ -37,7 +37,13 @@
             <td class="py-2 px-4 border-b">{{ visita.hora_salida }}</td>
             <td class="py-2 px-4 border-b">
               <!-- Boton de eliminar -->
+               <a href="{% url 'editar_visita' visita.id %}"
+                 class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition-all">
+                 ✏️ Editar
+              </a>
+               <a href="{% url 'detalle_visita' visita.id %}" class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600 transition-all">Ver</a>
               <form action="{% url 'eliminar_visita' visita.id %}" method="post" class="inline" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta visita?');">
+
                 
                 {% csrf_token %}
                 <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition-all">Eliminar</button>

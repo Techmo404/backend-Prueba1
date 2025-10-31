@@ -3,6 +3,7 @@ from datetime import date
 
 # Create your models here.
 
+
 # modelo de visita con sus caracteristicas
 class Visita(models.Model):
     nombre = models.CharField(max_length=100) 

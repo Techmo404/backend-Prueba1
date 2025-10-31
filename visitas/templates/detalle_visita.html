@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Detalle de la Visita
+{% endblock %}
+
+{% block content %}
+  <h1 class="text-2xl font-bold mb-4">Detalle de la Visita</h1>
+
+  <div class="bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-semibold text-gray-800">{{ visita.nombre }}</h2>
+    <p class="mt-2 text-gray-600"><strong>RUT:</strong> {{ visita.rut }}</p>
+    <p class="mt-2 text-gray-600"><strong>Motivo:</strong> {{ visita.motivo_visita }}</p>
+    <p class="mt-2 text-gray-600"><strong>Fecha:</strong> {{ visita.fecha }}</p>
+    <p class="mt-2 text-gray-600"><strong>Hora de entrada:</strong> {{ visita.hora_entrada }}</p>
+    <p class="mt-2 text-gray-600"><strong>Hora de salida:</strong> {{ visita.hora_salida }}</p>
+
+    <a href="{% url 'lista_visitas' %}" class="hover:scale-105 transition-all ease-in mt-6 inline-block bg-blue-600 text-white px-4 py-2 rounded">
+      ← Volver a la lista
+    </a>
+  </div>
+{% endblock %}
