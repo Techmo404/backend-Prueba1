@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-=b=b!#+f$*y3owxcizdhzdqn!+za7f!3knkd=+2505*#ilv^0)
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'backend-prueba1.onrender.com'
+    '.onrender.com'
     ]
 
 STATIC_URL = '/static'
