@@ -32,6 +32,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'backend-prueba1.onrender.com',
     'web-production-ee8bd.up.railway.app'
+    'web-production-a1fb0.up.railway.app'
     ]
 
 CSRF_TRUSTED_ORIGINS = [
