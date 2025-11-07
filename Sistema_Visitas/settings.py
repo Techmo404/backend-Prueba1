@@ -34,6 +34,11 @@ ALLOWED_HOSTS = [
     'web-production-ee8bd.up.railway.app'
     ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://backend-prueba1.onrender.com',
+    'https://web-production-ee8bd.up.railway.app'
+    ]
+
 STATIC_URL = '/static'
 STATIC_ROOT = BASE_DIR/ 'public'
 
