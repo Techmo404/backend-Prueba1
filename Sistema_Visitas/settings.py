@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://backend-prueba1.onrender.com',
     'https://web-production-ee8bd.up.railway.app'
+    'https://web-production-a1fb0.up.railway.app'
     ]
 
 STATIC_URL = '/static'
