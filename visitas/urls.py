@@ -1,6 +1,9 @@
-from django.urls import path
+from django.urls import include,path
 from . import views
-# urls principales, visita y eliminar visita
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r"Visita", views.VisitaViewSet)
 urlpatterns = [
     path("", views.lista_visitas, name="lista_visitas"),
     path("nueva/", views.nueva_visita, name="nueva_visita"),

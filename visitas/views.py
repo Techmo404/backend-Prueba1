@@ -4,6 +4,15 @@ from .forms import VisitaForm
 from datetime import date
 from django.contrib import messages
 
+from django.contrib.auth.models import Group, User
+from rest_framework import permissions, viewsets
+from .serializers import GroupSerializer, VisitaSerializer
+
+class VisitaViewSet(viewsets.ModelViewSet):
+    queryset =Visita.objects.all().order_by("nombre")
+    serializer_class = VisitaSerializer
+    permissions_classes = [permissions.ItAusthenticated]
+
 def lista_visitas(request):
     visitas = Visita.objects.all() 
     return render(request, 'lista_visitas.html', {'visitas': visitas})
