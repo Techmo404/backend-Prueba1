@@ -30,9 +30,13 @@ SECRET_KEY = 'django-insecure-=b=b!#+f$*y3owxcizdhzdqn!+za7f!3knkd=+2505*#ilv^0)
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'backend-prueba1.onrender.com',
-    'web-production-ee8bd.up.railway.app'
+    '127.0.0.1'
     ]
+
+#de donde me permite las solicitudes HHTP
+CORS_ALLOWED_ORIGINS  = [
+    ""
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://backend-prueba1.onrender.com',
@@ -57,11 +61,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'visitas',
     'rest_framework',
+    'corsheaders',
 ]
 
+from datetime import timedelta
+
 REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
+}
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
 MIDDLEWARE = [
@@ -73,6 +88,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'Sistema_Visitas.urls'
