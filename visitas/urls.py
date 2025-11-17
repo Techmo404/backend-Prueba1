@@ -12,6 +12,7 @@ urlpatterns = [
     path("eliminar/<int:visita_id>/", views.eliminar_visita, name="eliminar_visita"),
     path('detalle/<int:visita_id>/', views.detalle_visita, name='detalle_visita'),
     path('visitas/editar/<int:id>/', views.editar_visita, name='editar_visita'),
+    path("api/", include(router.urls)),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
 ]
