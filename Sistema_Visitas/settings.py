@@ -30,10 +30,13 @@ SECRET_KEY = 'django-insecure-=b=b!#+f$*y3owxcizdhzdqn!+za7f!3knkd=+2505*#ilv^0)
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'backend-prueba1.onrender.com',
-    'web-production-ee8bd.up.railway.app'
-    'web-production-a1fb0.up.railway.app'
+    '127.0.0.1'
     ]
+
+#de donde me permite las solicitudes HHTP
+CORS_ALLOWED_ORIGINS  = [
+    "http://127.0.0.1:5500"
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://backend-prueba1.onrender.com',
@@ -57,7 +60,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'visitas',
+    'rest_framework',
+    'corsheaders',
 ]
+
+from datetime import timedelta
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+}
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,6 +88,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'Sistema_Visitas.urls'
@@ -93,14 +114,20 @@ WSGI_APPLICATION = 'Sistema_Visitas.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+#ATABASES = {
+#    'default': {
+#        "ENGINE": "django.db.backends.postgresql",
+#        "NAME": os.getenv("DBNAME"),
+#        "USER":os.getenv("USER"),
+#        "PASSWORD": os.getenv("PASSWORD"),
+#        "HOST": os.getenv("HOST"),
+#        "PORT": os.getenv("DB_PORT"),
+#    }
+#}
 DATABASES = {
-    'default': {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DBNAME"),
-        "USER":os.getenv("USER"),
-        "PASSWORD": os.getenv("PASSWORD"),
-        "HOST": os.getenv("HOST"),
-        "PORT": os.getenv("DB_PORT"),
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "mydatabase",
     }
 }
 
